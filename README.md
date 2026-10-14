@@ -59,11 +59,15 @@ The project demonstrates:
 
 ✅ Python Security Analysis
 
-✅ Dependency Review
-
 ✅ Dependabot
 
 ✅ DevSecOps Controls
+
+✅ Security Scanning
+
+✅ GitLeaks
+
+✅ Bandit
 
 ---
 
@@ -124,7 +128,6 @@ GitHub Actions CI/CD
     ├── Python Lint
     ├── Secret Scanning
     ├── Security Analysis
-    └── Dependency Review
     │
     ▼
 
@@ -151,7 +154,6 @@ devops-automation-toolkit
 │   │   ├── python-lint.yml
 │   │   ├── gitleaks.yml
 │   │   ├── bandit.yml
-│   │   └── dependency-review.yml
 │   │
 │   └── dependabot.yml
 │
@@ -335,14 +337,6 @@ Bandit automatically scans Python code for:
 - Hardcoded Passwords
 - Security Misconfigurations
 
-### Dependency Review
-
-GitHub Dependency Review validates:
-
-- Dependency changes
-- Known vulnerabilities
-- Supply-chain risks
-
 ### Dependabot
 
 Dependabot automatically monitors:
@@ -426,7 +420,6 @@ bandit -r python
 - [x] Gitleaks
 - [x] Bandit
 - [x] Dependabot
-- [x] Dependency Review
 - [x] Security Policy
 - [x] Secret Scanning
 - [x] DevSecOps Controls
@@ -443,7 +436,6 @@ bandit -r python
 - Gitleaks
 - Bandit
 - Dependabot
-- Dependency Review
 - DevSecOps
 - CI/CD
 - Security Automation
