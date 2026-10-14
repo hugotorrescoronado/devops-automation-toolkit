@@ -1,0 +1,6 @@
+INFO Application started
+WARNING Low disk space
+ERROR Database connection failed
+INFO Retry initiated
+ERROR Timeout detected
+INFO Processing complete
