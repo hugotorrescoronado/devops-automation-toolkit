@@ -1,8 +1,11 @@
 from collections import Counter
+from pathlib import Path
+
+LOG_FILE = Path(__file__).parent.parent / "sample-logs" / "app.log"
 
 counter = Counter()
 
-with open("sample-logs/app.log", "r") as log:
+with open(LOG_FILE, "r") as log:
 
     for line in log:
 
