@@ -45,7 +45,13 @@ The project focuses on operational tooling and automation practices including:
 
 ✅ GitHub Actions
 
-⏳ HTML Reporting
+✅ CSV Report Generation
+
+✅ HTML Report Generation
+
+✅ Operational Reporting
+
+✅ Infrastructure Reporting
 
 ⏳ Security Scanning
 
@@ -297,9 +303,9 @@ pip install psutil boto3
 
 ### Phase 4 - System Reporting
 
-- [ ] CSV Reports
-- [ ] HTML Reports
-- [ ] Historical Reporting
+- [x] CSV Reports
+- [x] HTML Reports
+- [x] Historical Reporting
 
 ### Phase 5 - GitHub Actions
 
