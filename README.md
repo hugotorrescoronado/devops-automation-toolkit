@@ -70,7 +70,13 @@ Windows infrastructure reporting using PowerShell.
 
 ---
 
-### Log Analysis
+✅ CSV Report Generation
+
+✅ HTML Report Generation
+
+✅ Operational Reporting
+
+✅ Infrastructure Reporting
 
 Automated log parsing and reporting.
 
