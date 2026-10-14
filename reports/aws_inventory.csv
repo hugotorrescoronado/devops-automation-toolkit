@@ -1,0 +1,3 @@
+InstanceId,InstanceType,State
+i-0123456789abcdef0,t3.micro,running
+i-0987654321abcdef0,t3.small,stopped
