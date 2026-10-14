@@ -1,16 +1,20 @@
 Write-Host "=== SYSTEM HEALTH REPORT ==="
 
-$cpu = Get-Counter '\Processor(_Total)\% Processor Time'
-
-Write-Host "CPU Usage:"
-$cpu.CounterSamples.CookedValue
-
+$cpu = Get-CimInstance Win32_Processor
 $memory = Get-CimInstance Win32_OperatingSystem
+$disk = Get-CimInstance Win32_LogicalDisk -Filter "DriveType=3"
 
-Write-Host "Memory Free:"
-$memory.FreePhysicalMemory
+Write-Host ""
 
-$disk = Get-CimInstance Win32_LogicalDisk
+Write-Host "CPU Information:"
+$cpu | Format-Table Name, NumberOfCores -AutoSize
+
+Write-Host ""
+
+Write-Host "Memory Free (KB):"
+Write-Host $memory.FreePhysicalMemory
+
+Write-Host ""
 
 Write-Host "Disk Information:"
-$disk | Select DeviceID,FreeSpace,Size
+$disk | Format-Table DeviceID, FreeSpace, Size -AutoSize

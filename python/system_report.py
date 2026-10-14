@@ -35,9 +35,11 @@ html_content = f"""
 <!DOCTYPE html>
 <html>
 <head>
-<title>System Report</title>
+
+<title>System Health Report</title>
 
 <style>
+
 body {{
     font-family: Arial, sans-serif;
     margin: 40px;
@@ -57,6 +59,7 @@ th {{
     background-color: #0078D7;
     color: white;
 }}
+
 </style>
 
 </head>
@@ -92,6 +95,7 @@ th {{
 </table>
 
 </body>
+
 </html>
 """
 
