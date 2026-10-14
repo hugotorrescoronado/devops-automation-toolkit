@@ -6,21 +6,30 @@
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 
-DevOps automation toolkit demonstrating Python, PowerShell, Bash, AWS inventory reporting, operational reporting, GitHub Actions CI/CD, and Platform Engineering practices.
+DevOps automation toolkit demonstrating Python, PowerShell, Bash, AWS inventory reporting, infrastructure reporting, GitHub Actions CI/CD, security scanning, and DevSecOps practices.
 
 ---
 
 ## Overview
 
-This repository contains automation utilities commonly used by:
+This repository contains practical automation utilities commonly used by:
 
 - DevOps Engineers
 - Platform Engineers
 - Cloud Engineers
 - Site Reliability Engineers (SREs)
-- Automation Engineers
+- Test Automation Engineers
 
-The project demonstrates operational automation, reporting, inventory management, health monitoring, and CI/CD practices.
+The project demonstrates:
+
+- Infrastructure Monitoring
+- Log Analysis
+- AWS Inventory Reporting
+- Reporting Automation
+- CI/CD Pipelines
+- DevSecOps Controls
+- Secret Scanning
+- Security Analysis
 
 ---
 
@@ -46,9 +55,15 @@ The project demonstrates operational automation, reporting, inventory management
 
 ✅ Automated Validation
 
-✅ Infrastructure Reporting
+✅ Secret Scanning
 
-⏳ Security & DevSecOps
+✅ Python Security Analysis
+
+✅ Dependency Review
+
+✅ Dependabot
+
+✅ DevSecOps Controls
 
 ---
 
@@ -56,29 +71,23 @@ The project demonstrates operational automation, reporting, inventory management
 
 ### Python Health Check
 
-System health monitoring using Python.
-
 ![Python Health Check](docs/health-check-output.png)
 
 ---
 
 ### PowerShell Health Check
 
-Windows infrastructure reporting using PowerShell.
-
 ![PowerShell Health Check](docs/powershell-health-check.png)
 
 ---
 
-✅ CSV Report Generation
+### Bash Health Check
 
-✅ HTML Report Generation
+![Bash Health Check](docs/bash-health-check.png)
 
-✅ Operational Reporting
+---
 
-✅ Infrastructure Reporting
-
-Automated log parsing and reporting.
+### Log Analysis
 
 ![Log Analysis](docs/log-analysis-output.png)
 
@@ -86,17 +95,46 @@ Automated log parsing and reporting.
 
 ### AWS Inventory Reporting
 
-AWS inventory reporting using Boto3 and sample inventory data.
-
 ![AWS Inventory Reporting](docs/aws-inventory-output.png)
 
 ---
 
 ### HTML System Report
 
-Generated infrastructure report.
-
 ![HTML System Report](docs/html-report.png)
+
+---
+
+## Architecture
+
+```text
+Developer
+    │
+    ▼
+
+GitHub Repository
+    │
+    ▼
+
+GitHub Actions CI/CD
+    │
+    ├── Python Validation
+    ├── PowerShell Validation
+    ├── Bash Validation
+    ├── Python Lint
+    ├── Secret Scanning
+    ├── Security Analysis
+    └── Dependency Review
+    │
+    ▼
+
+Automation Scripts
+    │
+    ├── Health Monitoring
+    ├── Log Analysis
+    ├── AWS Reporting
+    └── Report Generation
+```
 
 ---
 
@@ -106,11 +144,16 @@ Generated infrastructure report.
 devops-automation-toolkit
 │
 ├── .github/
-│   └── workflows/
-│       ├── python-validation.yml
-│       ├── powershell-validation.yml
-│       ├── bash-validation.yml
-│       └── python-lint.yml
+│   ├── workflows/
+│   │   ├── python-validation.yml
+│   │   ├── powershell-validation.yml
+│   │   ├── bash-validation.yml
+│   │   ├── python-lint.yml
+│   │   ├── gitleaks.yml
+│   │   ├── bandit.yml
+│   │   └── dependency-review.yml
+│   │
+│   └── dependabot.yml
 │
 ├── python/
 │   ├── health_check.py
@@ -130,14 +173,35 @@ devops-automation-toolkit
 ├── sample-logs/
 │   └── app.log
 │
-├── reports/
-│
 ├── docs/
 │
+├── reports/
+│
+├── SECURITY.md
 ├── requirements.txt
 ├── README.md
 ├── LICENSE
 └── .gitignore
+```
+
+---
+
+## Branch Strategy
+
+```text
+main
+
+feature/health-checks
+
+feature/log-analysis
+
+feature/aws-inventory
+
+feature/system-reporting
+
+feature/github-actions
+
+feature/security-scanning
 ```
 
 ---
@@ -167,12 +231,6 @@ psutil
 boto3
 ```
 
-Install manually:
-
-```bash
-pip install psutil boto3
-```
-
 ---
 
 ## Health Monitoring
@@ -181,22 +239,6 @@ Run:
 
 ```bash
 python python/health_check.py
-```
-
-Example output:
-
-```text
-=== SYSTEM HEALTH REPORT ===
-
-Hostname: DESKTOP-XXXXXXX
-
-Operating System: Windows
-
-CPU Usage: 20.3%
-
-Memory Usage: 88%
-
-Disk Usage: 10.9%
 ```
 
 ---
@@ -209,18 +251,6 @@ Run:
 python python/log_analyzer.py
 ```
 
-Example output:
-
-```text
-=== LOG ANALYSIS REPORT ===
-
-INFO Messages: 3
-
-WARNING Messages: 1
-
-ERROR Messages: 2
-```
-
 ---
 
 ## AWS Inventory Reporting
@@ -231,19 +261,13 @@ Run:
 python python/aws_inventory.py
 ```
 
-Example output:
+The tool supports:
 
-```text
-AWS unavailable. Using sample inventory data.
+- AWS Integration via Boto3
+- Sample Inventory Data
+- CSV Export Reporting
 
-=== AWS INVENTORY REPORT ===
-
-i-0123456789abcdef0 | t3.micro | running
-
-i-0987654321abcdef0 | t3.small | stopped
-```
-
-Generated CSV:
+Generated file:
 
 ```text
 reports/aws_inventory.csv
@@ -253,13 +277,13 @@ reports/aws_inventory.csv
 
 ## System Reporting
 
-Generate system reports:
+Generate reports:
 
 ```bash
 python python/system_report.py
 ```
 
-Generated files:
+Generated outputs:
 
 ```text
 reports/system_report.csv
@@ -271,41 +295,61 @@ reports/system_report.html
 
 ## GitHub Actions
 
-The project automatically validates scripts on every:
+The repository automatically validates every:
 
 ```text
 Push
 Pull Request
 ```
 
-Workflows:
+### Validation Workflows
 
-### Python Validation
+✅ Python Validation
 
-```text
-health_check.py
-log_analyzer.py
-aws_inventory.py
-system_report.py
-```
+✅ PowerShell Validation
 
-### PowerShell Validation
+✅ Bash Validation
 
-```text
-health-check.ps1
-```
+✅ Python Lint
 
-### Bash Validation
+---
 
-```text
-health-check.sh
-```
+## Security Controls
 
-### Python Lint
+### Secret Scanning
 
-```text
-flake8
-```
+Gitleaks automatically scans the repository for:
+
+- API keys
+- Access Tokens
+- Passwords
+- Credentials
+- Secrets
+
+### Python Security Analysis
+
+Bandit automatically scans Python code for:
+
+- Insecure Imports
+- Dangerous Functions
+- Hardcoded Passwords
+- Security Misconfigurations
+
+### Dependency Review
+
+GitHub Dependency Review validates:
+
+- Dependency changes
+- Known vulnerabilities
+- Supply-chain risks
+
+### Dependabot
+
+Dependabot automatically monitors:
+
+- Python dependencies
+- Security updates
+- Package upgrades
 
 ---
 
@@ -333,6 +377,12 @@ Bash:
 
 ```bash
 bash bash/health-check.sh
+```
+
+Bandit:
+
+```bash
+bandit -r python
 ```
 
 ---
@@ -368,16 +418,18 @@ bash bash/health-check.sh
 - [x] Python Validation
 - [x] PowerShell Validation
 - [x] Bash Validation
-- [x] Linting
+- [x] Python Lint
 - [x] CI/CD Automation
 
-### Phase 6 – Security
+### Phase 6 – Security & DevSecOps
 
-- [ ] Gitleaks
-- [ ] Dependency Scanning
-- [ ] Secret Detection
-- [ ] Security Workflow
-- [ ] DevSecOps Controls
+- [x] Gitleaks
+- [x] Bandit
+- [x] Dependabot
+- [x] Dependency Review
+- [x] Security Policy
+- [x] Secret Scanning
+- [x] DevSecOps Controls
 
 ---
 
@@ -388,21 +440,33 @@ bash bash/health-check.sh
 - Bash
 - AWS SDK (Boto3)
 - GitHub Actions
+- Gitleaks
+- Bandit
+- Dependabot
+- Dependency Review
+- DevSecOps
+- CI/CD
+- Security Automation
 - CSV Reporting
 - HTML Reporting
-- Log Analysis
-- DevOps Automation
 - Cloud Operations
 - Platform Engineering
 - Infrastructure Automation
-- CI/CD
+
+---
+
+## Security
+
+See:
+
+```text
+SECURITY.md
+```
+
+for vulnerability disclosure and security controls.
 
 ---
 
 ## Status
 
-✅ Phase 5 Complete
-
-Next Phase:
-
-🚧 Security & DevSecOps
+✅ Portfolio Complete (v1.0.0)
