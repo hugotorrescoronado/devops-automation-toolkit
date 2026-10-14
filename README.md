@@ -6,24 +6,21 @@
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 
-DevOps automation toolkit demonstrating Python, PowerShell, Bash, AWS inventory reporting, health checks, log analysis, reporting, and CI/CD automation.
+DevOps automation toolkit demonstrating Python, PowerShell, Bash, AWS inventory reporting, operational reporting, GitHub Actions CI/CD, and Platform Engineering practices.
 
 ---
 
 ## Overview
 
-This repository contains practical automation utilities commonly used by DevOps Engineers, Platform Engineers, Cloud Engineers, and Site Reliability Engineers (SREs).
+This repository contains automation utilities commonly used by:
 
-The project focuses on operational tooling and automation practices including:
+- DevOps Engineers
+- Platform Engineers
+- Cloud Engineers
+- Site Reliability Engineers (SREs)
+- Automation Engineers
 
-- System Health Checks
-- Log Analysis
-- AWS Inventory Reporting
-- Infrastructure Reporting
-- GitHub Actions Automation
-- Python Automation
-- PowerShell Automation
-- Bash Automation
+The project demonstrates operational automation, reporting, inventory management, health monitoring, and CI/CD practices.
 
 ---
 
@@ -35,7 +32,7 @@ The project focuses on operational tooling and automation practices including:
 
 ✅ Bash Automation
 
-✅ System Health Checks
+✅ System Health Monitoring
 
 ✅ Log Analysis
 
@@ -43,13 +40,57 @@ The project focuses on operational tooling and automation practices including:
 
 ✅ CSV Report Generation
 
-✅ GitHub Actions
+✅ HTML Report Generation
 
-⏳ HTML Reporting
+✅ GitHub Actions CI/CD
 
-⏳ Security Scanning
+✅ Automated Validation
 
-⏳ Infrastructure Dashboards
+✅ Infrastructure Reporting
+
+⏳ Security & DevSecOps
+
+---
+
+## Screenshots
+
+### Python Health Check
+
+System health monitoring using Python.
+
+![Python Health Check](docs/health-check-output.png)
+
+---
+
+### PowerShell Health Check
+
+Windows infrastructure reporting using PowerShell.
+
+![PowerShell Health Check](docs/powershell-health-check.png)
+
+---
+
+### Log Analysis
+
+Automated log parsing and reporting.
+
+![Log Analysis](docs/log-analysis-output.png)
+
+---
+
+### AWS Inventory Reporting
+
+AWS inventory reporting using Boto3 and sample inventory data.
+
+![AWS Inventory Reporting](docs/aws-inventory-output.png)
+
+---
+
+### HTML System Report
+
+Generated infrastructure report.
+
+![HTML System Report](docs/html-report.png)
 
 ---
 
@@ -58,10 +99,18 @@ The project focuses on operational tooling and automation practices including:
 ```text
 devops-automation-toolkit
 │
+├── .github/
+│   └── workflows/
+│       ├── python-validation.yml
+│       ├── powershell-validation.yml
+│       ├── bash-validation.yml
+│       └── python-lint.yml
+│
 ├── python/
 │   ├── health_check.py
 │   ├── log_analyzer.py
-│   └── aws_inventory.py
+│   ├── aws_inventory.py
+│   └── system_report.py
 │
 ├── powershell/
 │   └── health-check.ps1
@@ -69,16 +118,15 @@ devops-automation-toolkit
 ├── bash/
 │   └── health-check.sh
 │
-├── sample-logs/
-│   └── app.log
-│
 ├── sample-data/
 │   └── ec2_inventory.json
 │
+├── sample-logs/
+│   └── app.log
+│
 ├── reports/
 │
-├── .github/
-│   └── workflows/
+├── docs/
 │
 ├── requirements.txt
 ├── README.md
@@ -88,163 +136,9 @@ devops-automation-toolkit
 
 ---
 
-## Branch Strategy
-
-The project follows a feature branch workflow.
-
-```text
-main
-
-feature/health-checks
-
-feature/log-analysis
-
-feature/aws-inventory
-
-feature/system-reporting
-
-feature/github-actions
-
-feature/security-scanning
-```
-
----
-
-# Phase 1 - Health Checks
-
-Automated system health monitoring using multiple scripting languages.
-
-### Python
-
-```bash
-python python/health_check.py
-```
-
-### PowerShell
-
-```powershell
-.\powershell\health-check.ps1
-```
-
-### Bash
-
-```bash
-bash bash/health-check.sh
-```
-
-Example output:
-
-```text
-=== SYSTEM HEALTH REPORT ===
-
-Hostname: DESKTOP-XXXXXXX
-
-Operating System: Windows
-
-CPU Usage: 12%
-
-Memory Usage: 43%
-
-Disk Usage: 61%
-```
-
----
-
-# Phase 2 - Log Analysis
-
-Analyze log files and generate error statistics.
-
-Sample log:
-
-```text
-INFO Application started
-WARNING Low disk space
-ERROR Database connection failed
-INFO Retry initiated
-ERROR Timeout detected
-```
-
-Run:
-
-```bash
-python python/log_analyzer.py
-```
-
-Output:
-
-```text
-=== LOG ANALYSIS REPORT ===
-
-INFO Messages: 3
-
-WARNING Messages: 1
-
-ERROR Messages: 2
-```
-
----
-
-# Phase 3 - AWS Inventory Reporting
-
-Generates EC2 inventory reports.
-
-The utility operates in two modes:
-
-### Mode 1
-
-Uses real AWS resources through:
-
-```text
-AWS SDK (Boto3)
-```
-
-when credentials are configured.
-
-### Mode 2
-
-Uses sample inventory data:
-
-```text
-sample-data/ec2_inventory.json
-```
-
-allowing anyone to run the repository without AWS credentials.
-
-Run:
-
-```bash
-python python/aws_inventory.py
-```
-
-Example output:
-
-```text
-=== AWS INVENTORY REPORT ===
-
-i-0123456789abcdef0 | t3.micro | running
-
-i-0987654321abcdef0 | t3.small | stopped
-```
-
-Generated report:
-
-```text
-reports/aws_inventory.csv
-```
-
-Example:
-
-```csv
-InstanceId,InstanceType,State
-i-0123456789abcdef0,t3.micro,running
-i-0987654321abcdef0,t3.small,stopped
-```
-
----
-
 ## Installation
 
-Clone repository:
+Clone the repository:
 
 ```bash
 git clone https://github.com/hugotorrescoronado/devops-automation-toolkit.git
@@ -275,43 +169,209 @@ pip install psutil boto3
 
 ---
 
+## Health Monitoring
+
+Run:
+
+```bash
+python python/health_check.py
+```
+
+Example output:
+
+```text
+=== SYSTEM HEALTH REPORT ===
+
+Hostname: DESKTOP-XXXXXXX
+
+Operating System: Windows
+
+CPU Usage: 20.3%
+
+Memory Usage: 88%
+
+Disk Usage: 10.9%
+```
+
+---
+
+## Log Analysis
+
+Run:
+
+```bash
+python python/log_analyzer.py
+```
+
+Example output:
+
+```text
+=== LOG ANALYSIS REPORT ===
+
+INFO Messages: 3
+
+WARNING Messages: 1
+
+ERROR Messages: 2
+```
+
+---
+
+## AWS Inventory Reporting
+
+Run:
+
+```bash
+python python/aws_inventory.py
+```
+
+Example output:
+
+```text
+AWS unavailable. Using sample inventory data.
+
+=== AWS INVENTORY REPORT ===
+
+i-0123456789abcdef0 | t3.micro | running
+
+i-0987654321abcdef0 | t3.small | stopped
+```
+
+Generated CSV:
+
+```text
+reports/aws_inventory.csv
+```
+
+---
+
+## System Reporting
+
+Generate system reports:
+
+```bash
+python python/system_report.py
+```
+
+Generated files:
+
+```text
+reports/system_report.csv
+
+reports/system_report.html
+```
+
+---
+
+## GitHub Actions
+
+The project automatically validates scripts on every:
+
+```text
+Push
+Pull Request
+```
+
+Workflows:
+
+### Python Validation
+
+```text
+health_check.py
+log_analyzer.py
+aws_inventory.py
+system_report.py
+```
+
+### PowerShell Validation
+
+```text
+health-check.ps1
+```
+
+### Bash Validation
+
+```text
+health-check.sh
+```
+
+### Python Lint
+
+```text
+flake8
+```
+
+---
+
+## Local Validation
+
+Python:
+
+```bash
+python python/health_check.py
+
+python python/log_analyzer.py
+
+python python/aws_inventory.py
+
+python python/system_report.py
+```
+
+PowerShell:
+
+```powershell
+.\powershell\health-check.ps1
+```
+
+Bash:
+
+```bash
+bash bash/health-check.sh
+```
+
+---
+
 ## Roadmap
 
-### Phase 1 - Health Checks
+### Phase 1 – Health Monitoring
 
 - [x] Python Health Check
 - [x] PowerShell Health Check
 - [x] Bash Health Check
 
-### Phase 2 - Log Analysis
+### Phase 2 – Log Analysis
 
 - [x] Log Parsing
 - [x] Error Reporting
 - [x] Warning Reporting
 
-### Phase 3 - AWS Inventory Reporting
+### Phase 3 – AWS Inventory Reporting
 
 - [x] AWS Inventory Utility
 - [x] Sample Inventory Data
 - [x] CSV Export
 
-### Phase 4 - System Reporting
+### Phase 4 – System Reporting
 
-- [ ] CSV Reports
-- [ ] HTML Reports
-- [ ] Historical Reporting
+- [x] CSV Reports
+- [x] HTML Reports
+- [x] Infrastructure Reporting
 
-### Phase 5 - GitHub Actions
+### Phase 5 – GitHub Actions
 
-- [ ] Python Validation
-- [ ] Linting
-- [ ] Automated Testing
+- [x] Python Validation
+- [x] PowerShell Validation
+- [x] Bash Validation
+- [x] Linting
+- [x] CI/CD Automation
 
-### Phase 6 - Security
+### Phase 6 – Security
 
 - [ ] Gitleaks
 - [ ] Dependency Scanning
-- [ ] Secrets Detection
+- [ ] Secret Detection
+- [ ] Security Workflow
+- [ ] DevSecOps Controls
 
 ---
 
@@ -323,14 +383,20 @@ pip install psutil boto3
 - AWS SDK (Boto3)
 - GitHub Actions
 - CSV Reporting
+- HTML Reporting
 - Log Analysis
 - DevOps Automation
-- Platform Engineering
 - Cloud Operations
+- Platform Engineering
 - Infrastructure Automation
+- CI/CD
 
 ---
 
 ## Status
 
-🚧 Phase 3 In Progress
+✅ Phase 5 Complete
+
+Next Phase:
+
+🚧 Security & DevSecOps

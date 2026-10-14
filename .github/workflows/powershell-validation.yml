@@ -1,0 +1,24 @@
+name: PowerShell Validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+
+  validate-powershell:
+
+    runs-on: windows-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Execute Health Check
+
+        shell: powershell
+
+        run: |
+
+          ./powershell/health-check.ps1

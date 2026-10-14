@@ -1,0 +1,52 @@
+name: Python Validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+
+  validate-python:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+
+        run: |
+
+          pip install -r requirements.txt
+
+      - name: Validate Health Check
+
+        run: |
+
+          python python/health_check.py
+
+      - name: Validate Log Analyzer
+
+        run: |
+
+          python python/log_analyzer.py
+
+      - name: Validate AWS Inventory
+
+        run: |
+
+          python python/aws_inventory.py
+
+      - name: Validate System Reporting
+
+        run: |
+
+          python python/system_report.py

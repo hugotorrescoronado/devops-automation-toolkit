@@ -2,6 +2,8 @@
 
 echo "=== SYSTEM HEALTH REPORT ==="
 
+echo ""
+echo "Hostname:"
 hostname
 
 echo ""

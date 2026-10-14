@@ -1,0 +1,28 @@
+name: Bash Validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+
+  validate-bash:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Make Script Executable
+
+        run: |
+
+          chmod +x bash/health-check.sh
+
+      - name: Execute Script
+
+        run: |
+
+          ./bash/health-check.sh
